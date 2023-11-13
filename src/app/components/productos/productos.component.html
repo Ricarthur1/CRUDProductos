@@ -12,6 +12,58 @@
         <div class="card">
           <div class="card-body">
             <h5 class="titulo">AGREGAR PRODUCTO</h5>
+
+            <form>
+              <div class="input-group input-group-lg mb-3">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-key"></i>
+                </span>
+                <input formControlName="id" type="number" class="form-control" placeholder="ID" />
+              </div>
+              <div class="input-group input-group-lg mb-3">
+                <span class="input-group-text">
+                  <i class="fa-brands fa-product-hunt"></i>
+                </span>
+                <input formControlName="id" type="text" class="form-control" placeholder="Nombre" />
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-circle-info"></i></span>
+                <textarea class="form-control" aria-label="Descripcion"></textarea>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-7">
+                  <div class="input-group input-group-lg mb-3">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-dollar-sign"></i>
+                    </span>
+                    <input formControlName="id" type="text" class="form-control" placeholder="Precio" />
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="input-group input-group-lg mb-3">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-arrow-up-wide-short"></i>
+                    </span>
+                    <input formControlName="id" type="number" class="form-control" placeholder="Cantidad" />
+                  </div>
+                </div>
+              </div>
+              <div class="input-group input-group-lg mb-3">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-calendar-check"></i>
+                </span>
+                <input formControlName="id" type="datetime" class="form-control" placeholder="Creado en" />
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success btn-lg">
+                  <i class="fa-solid fa-database"></i>&nbsp; Aceptar</button>
+              </div>
+              </form>
+
+
+
+
           </div>
         </div>
       </div>
@@ -21,13 +73,13 @@
             <h5 class="titulo">LISTADO DE PRODUCTOS</h5>
             <table class="table">
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Jamon de pavo</td>
-                  <td>Rico jamon de pavo</td>
-                  <td>15.90</td>
-                  <td>5</td>
-                  <td>13/11/2023 03:15</td>
+                <tr *ngFor="let producto of listProductos">
+                  <td>{{producto.id}}</td>
+                  <td>{{producto.nombre}}</td>
+                  <td>{{producto.descripcion}}</td>
+                  <td>{{producto.precio}}</td>
+                  <td>{{producto.cantidad}}</td>
+                  <td>{{producto.creado_en}}</td>
                   <td><i class="fa-regular fa-pen-to-square text-info"></i></td>
                   <td><i class="fa-regular fa-square-minus text-danger"></i></td>
                 </tr>
