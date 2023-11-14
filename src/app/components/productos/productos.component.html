@@ -71,7 +71,7 @@
                 <input formControlName="creado_en" type="datetime" class="form-control" placeholder="Creado en" />
               </div>
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-success btn-lg">
+                <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
                   <i class="fa-solid fa-database"></i>&nbsp; Aceptar</button>
               </div>
               </form>
