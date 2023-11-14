@@ -17,12 +17,12 @@ form: FormGroup;
 
 constructor(private fb: FormBuilder) {
   this.form = this.fb.group({
-    id:  [''],
-    nombre: [''],
-    descripcion: [''],
-    precio: [''],
-    cantidad:  [''],
-    creado_en:  ['']
+    id:  ['', Validators.required],
+    nombre: ['', [Validators.required, Validators.maxLength(50)]],
+    descripcion: ['', Validators.required],
+    precio: ['', Validators.required],
+    cantidad:  ['', [Validators.required, Validators.min(1)]],
+    creado_en:  ['', Validators.required]
   })
 }
 ngOnInit(): void {

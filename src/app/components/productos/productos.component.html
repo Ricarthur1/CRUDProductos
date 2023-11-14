@@ -16,34 +16,47 @@
             <form [formGroup]="form" (ngSubmit)="agregarProducto()">
               <div class="input-group input-group-lg mb-3">
                 <span class="input-group-text">
-                  <i class="fa-solid fa-key"></i>
+                  <i class="fa-solid fa-key"
+                  [class.green-icon]="this.form.get('id')?.valid"
+                  [class.red-icon]="this.form.get('id')?.invalid && this.form.get('id')?.touched">
+                  </i>
                 </span>
                 <input formControlName="id" type="number" class="form-control" placeholder="ID" />
               </div>
               <div class="input-group input-group-lg mb-3">
                 <span class="input-group-text">
-                  <i class="fa-brands fa-product-hunt"></i>
+                  <i class="fa-brands fa-product-hunt"
+                  [class.green-icon]="this.form.get('nombre')?.valid"
+                  [class.red-icon]="this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched"></i>
                 </span>
                 <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre" />
               </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text"><i class="fa-solid fa-circle-info"></i></span>
-                <textarea formControlName="descripcion" class="form-control" aria-label="Descripcion"></textarea>
+              <div class="input-group input-group-lg mb-3">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-circle-info"
+                  [class.green-icon]="this.form.get('descripcion')?.valid"
+                  [class.red-icon]="this.form.get('descripcion')?.invalid && this.form.get('descripcion')?.touched"></i>
+                </span>
+                <input formControlName="descripcion" type="text" class="form-control" placeholder="Descripcion" />
               </div>
 
               <div class="row">
                 <div class="col-lg-7">
                   <div class="input-group input-group-lg mb-3">
                     <span class="input-group-text">
-                      <i class="fa-solid fa-dollar-sign"></i>
+                      <i class="fa-solid fa-dollar-sign"
+                      [class.green-icon]="this.form.get('precio')?.valid"
+                      [class.red-icon]="this.form.get('precio')?.invalid && this.form.get('precio')?.touched"></i>
                     </span>
-                    <input formControlName="precio" type="text" class="form-control" placeholder="Precio" />
+                    <input formControlName="precio" type="number" class="form-control" placeholder="Precio" />
                   </div>
                 </div>
                 <div class="col-lg-5">
                   <div class="input-group input-group-lg mb-3">
                     <span class="input-group-text">
-                      <i class="fa-solid fa-arrow-up-wide-short"></i>
+                      <i class="fa-solid fa-arrow-up-wide-short"
+                      [class.green-icon]="this.form.get('cantidad')?.valid"
+                      [class.red-icon]="this.form.get('cantidad')?.invalid && this.form.get('cantidad')?.touched"></i>
                     </span>
                     <input formControlName="cantidad" type="number" class="form-control" placeholder="Cantidad" />
                   </div>
@@ -51,7 +64,9 @@
               </div>
               <div class="input-group input-group-lg mb-3">
                 <span class="input-group-text">
-                  <i class="fa-solid fa-calendar-check"></i>
+                  <i class="fa-solid fa-calendar-check"
+                  [class.green-icon]="this.form.get('creado_en')?.valid"
+                  [class.red-icon]="this.form.get('creado_en')?.invalid && this.form.get('creado_en')?.touched"></i>
                 </span>
                 <input formControlName="creado_en" type="datetime" class="form-control" placeholder="Creado en" />
               </div>
