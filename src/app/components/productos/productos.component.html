@@ -13,7 +13,7 @@
           <div class="card-body">
             <h5 class="titulo">AGREGAR PRODUCTO</h5>
 
-            <form>
+            <form [formGroup]="form" (ngSubmit)="agregarProducto()">
               <div class="input-group input-group-lg mb-3">
                 <span class="input-group-text">
                   <i class="fa-solid fa-key"></i>
@@ -24,11 +24,11 @@
                 <span class="input-group-text">
                   <i class="fa-brands fa-product-hunt"></i>
                 </span>
-                <input formControlName="id" type="text" class="form-control" placeholder="Nombre" />
+                <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre" />
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa-solid fa-circle-info"></i></span>
-                <textarea class="form-control" aria-label="Descripcion"></textarea>
+                <textarea formControlName="descripcion" class="form-control" aria-label="Descripcion"></textarea>
               </div>
 
               <div class="row">
@@ -37,7 +37,7 @@
                     <span class="input-group-text">
                       <i class="fa-solid fa-dollar-sign"></i>
                     </span>
-                    <input formControlName="id" type="text" class="form-control" placeholder="Precio" />
+                    <input formControlName="precio" type="text" class="form-control" placeholder="Precio" />
                   </div>
                 </div>
                 <div class="col-lg-5">
@@ -45,7 +45,7 @@
                     <span class="input-group-text">
                       <i class="fa-solid fa-arrow-up-wide-short"></i>
                     </span>
-                    <input formControlName="id" type="number" class="form-control" placeholder="Cantidad" />
+                    <input formControlName="cantidad" type="number" class="form-control" placeholder="Cantidad" />
                   </div>
                 </div>
               </div>
@@ -53,7 +53,7 @@
                 <span class="input-group-text">
                   <i class="fa-solid fa-calendar-check"></i>
                 </span>
-                <input formControlName="id" type="datetime" class="form-control" placeholder="Creado en" />
+                <input formControlName="creado_en" type="datetime" class="form-control" placeholder="Creado en" />
               </div>
               <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-success btn-lg">
