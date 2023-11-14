@@ -88,7 +88,7 @@
             <h5 class="titulo">LISTADO DE PRODUCTOS</h5>
             <table class="table">
               <tbody>
-                <tr *ngFor="let producto of listProductos">
+                <tr *ngFor="let producto of listProductos; let i = index">
                   <td>{{producto.id}}</td>
                   <td>{{producto.nombre}}</td>
                   <td>{{producto.descripcion}}</td>
@@ -96,7 +96,7 @@
                   <td>{{producto.cantidad}}</td>
                   <td>{{producto.creado_en}}</td>
                   <td><i class="fa-regular fa-pen-to-square text-info"></i></td>
-                  <td><i class="fa-regular fa-square-minus text-danger"></i></td>
+                  <td><i (click)="eliminarProducto(i)" class="fa-regular fa-square-minus text-danger"></i></td>
                 </tr>
               </tbody>
             </table>

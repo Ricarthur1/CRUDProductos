@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-productos',
@@ -15,7 +16,8 @@ export class ProductosComponent {
 
 form: FormGroup;
 
-constructor(private fb: FormBuilder) {
+constructor(private fb: FormBuilder,
+  private toastr: ToastrService) {
   this.form = this.fb.group({
     id:  ['', Validators.required],
     nombre: ['', [Validators.required, Validators.maxLength(50)]],
@@ -39,8 +41,14 @@ agregarProducto(){
     creado_en: this.form.get('creado_en')?.value,
   }
   this.listProductos.push(producto)
+  this.toastr.success('Producto Agregado!', 'El producto se agregó exitosamente');
   this.form.reset();
 
+}
+
+eliminarProducto(index: number){
+  this.listProductos.splice(index, 1);
+  this.toastr.error('Procuto eliminado','El producto se eliminó exitosamente')
 }
 
 
