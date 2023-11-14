@@ -38,6 +38,8 @@ agregarProducto(){
     cantidad: this.form.get('cantidad')?.value,
     creado_en: this.form.get('creado_en')?.value,
   }
+  this.listProductos.push(producto)
+  this.form.reset();
 
 }
 
