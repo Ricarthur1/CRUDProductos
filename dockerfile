@@ -1,5 +1,5 @@
 from node as build
-workdir ./app
+RUN mkdir -p /app
 copy package.json .
 run npm install
 copy . .

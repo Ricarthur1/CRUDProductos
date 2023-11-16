@@ -32,8 +32,6 @@ ngOnInit(): void {
  const localData = localStorage.getItem('listProductos');
  if (localData != null) {
   this.listProductos = JSON.parse(localData);
- } else {
-  
  }
  this.listProductos.sort(function (a, b) {
   // A va primero que B
