@@ -8,10 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent {
-  listProductos: any[] = [
-    { id: 1, nombre: 'Juguete', descripcion: 'Juguete de pokemon', precio: 299.90, cantidad: 10, creado_en: '10/10/2023 15:30'},
-    { id: 2, nombre: 'Ropa', descripcion: 'Playera de niño', precio: 199.90, cantidad: 20, creado_en: '10/10/2023 15:40'}
-  ];
+  listProductos: any[] = [];
 
 
 accion = 'Agregar ';
@@ -72,9 +69,13 @@ guardarProducto(){
   }
 
     if (this.id == undefined ) {
-      //Agrega una nueva tarjeta    
+
+    if (this.listProductos.some(e => e.id === producto.id)) {
+      this.toastr.info('El ID del Producto está en uso', 'Producto repetido!');
+    } else {
+            //Agrega una nueva tarjeta    
     this.listProductos.push(producto)
-    this.toastr.success('Producto Agregado!', 'El producto se agregó exitosamente');
+    this.toastr.success('El producto se agregó exitosamente', 'Producto agregado!');
     this.form.reset();
     this.listProductos.sort(function (a, b) {
       // A va primero que B
@@ -86,9 +87,14 @@ guardarProducto(){
       // A y B son iguales
       else 
           return 0;
+    
   });
+}
 
     } else {
+      if (this.listProductos.some(e => e.id === producto.id)) {
+        this.toastr.info('El ID del Producto está en uso', 'Producto repetido!');
+      }else{
       //Editar tarjeta
       producto.id = this.id
       this.form.reset();
@@ -98,6 +104,7 @@ guardarProducto(){
       this.listProductos.splice(index, 1)
       this.listProductos.push(currentProducto)
       this.toastr.info('Tarjeta Actualizada!','La tarjeta se actualizó correctamente');
+      }
     }
     localStorage.setItem('listProductos', JSON.stringify(this.listProductos));
     this.listProductos.sort(function (a, b) {
