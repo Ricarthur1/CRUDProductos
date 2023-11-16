@@ -90,9 +90,6 @@ guardarProducto(){
 }
 
     } else {
-      if (this.listProductos.some(e => e.id === producto.id)) {
-        this.toastr.info('El ID del Producto está en uso', 'Producto repetido!');
-      }else{
       //Editar tarjeta
       producto.id = this.id
       this.form.reset();
@@ -102,7 +99,7 @@ guardarProducto(){
       this.listProductos.splice(index, 1)
       this.listProductos.push(currentProducto)
       this.toastr.info('Tarjeta Actualizada!','La tarjeta se actualizó correctamente');
-      }
+      
     }
     localStorage.setItem('listProductos', JSON.stringify(this.listProductos));
     this.listProductos.sort(function (a, b) {
