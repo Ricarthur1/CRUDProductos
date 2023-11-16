@@ -11,9 +11,9 @@
       <div class="col-lg-8">
         <div class="card">
           <div class="card-body">
-            <h5 class="titulo">AGREGAR PRODUCTO</h5>
+            <h5 class="titulo">{{accion | uppercase }} PRODUCTO</h5>
 
-            <form [formGroup]="form" (ngSubmit)="agregarProducto()">
+            <form [formGroup]="form" (ngSubmit)="guardarProducto()">
               <div class="input-group input-group-lg mb-3">
                 <span class="input-group-text">
                   <i class="fa-solid fa-key"
@@ -21,7 +21,7 @@
                   [class.red-icon]="this.form.get('id')?.invalid && this.form.get('id')?.touched">
                   </i>
                 </span>
-                <input formControlName="id" type="number" class="form-control" placeholder="ID" />
+                <input formControlName="id" type="number" class="form-control" placeholder="ID"/>
               </div>
               <div class="input-group input-group-lg mb-3">
                 <span class="input-group-text">
@@ -29,7 +29,7 @@
                   [class.green-icon]="this.form.get('nombre')?.valid"
                   [class.red-icon]="this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched"></i>
                 </span>
-                <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre" />
+                <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre"/>
               </div>
               <div class="input-group input-group-lg mb-3">
                 <span class="input-group-text">
@@ -68,7 +68,7 @@
                   [class.green-icon]="this.form.get('creado_en')?.valid"
                   [class.red-icon]="this.form.get('creado_en')?.invalid && this.form.get('creado_en')?.touched"></i>
                 </span>
-                <input formControlName="creado_en" type="datetime" class="form-control" placeholder="Creado en" />
+                <input formControlName="creado_en" type="datetime" class="form-control" placeholder="Creado en"/>
               </div>
               <div class="d-grid gap-2">
                 <button [disabled]="this.form.invalid" type="submit" class="btn btn-success btn-lg">
@@ -87,6 +87,16 @@
           <div class="card-body">
             <h5 class="titulo">LISTADO DE PRODUCTOS</h5>
             <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">Precio ($)</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Creado en</th>
+                </tr>
+              </thead>
               <tbody>
                 <tr *ngFor="let producto of listProductos; let i = index">
                   <td>{{producto.id}}</td>
@@ -95,7 +105,7 @@
                   <td>{{producto.precio}}</td>
                   <td>{{producto.cantidad}}</td>
                   <td>{{producto.creado_en}}</td>
-                  <td><i class="fa-regular fa-pen-to-square text-info"></i></td>
+                  <td><i (click)="updateProducto(producto)" class="fa-regular fa-pen-to-square text-info"></i></td>
                   <td><i (click)="eliminarProducto(i)" class="fa-regular fa-square-minus text-danger"></i></td>
                 </tr>
               </tbody>
