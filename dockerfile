@@ -8,7 +8,7 @@
 
 
 # FROM nginx:1.13.12-alpine
-# copy --from=build /app/dist /usr/share/nginx/html
+# copy --from=build /app/dist/productos /usr/share/nginx/html
 # expose 80
 # CMD ["nginx", "-g", "daemon off;"]
 
@@ -36,7 +36,7 @@ RUN npm run build
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /app/dist/ /usr/share/nginx/html
+COPY --from=build /app/dist/productos /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
