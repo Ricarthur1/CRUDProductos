@@ -2,7 +2,7 @@ from node as build
 RUN mkdir -p /app
 copy package.json .
 run npm install
-copy . .
+copy . /app
 run npm run build
 
 
