@@ -1,8 +1,8 @@
 from node as build
-RUN mkdir -p /app
+workdir /app
 copy package.json .
 run npm install
-copy . /app
+copy . .
 run npm run build
 
 
